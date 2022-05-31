@@ -1,4 +1,4 @@
-//Stack Queue Deque
+//Lists is eqal
 
 
 
