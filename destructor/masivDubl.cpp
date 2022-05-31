@@ -101,6 +101,7 @@ class Myclass
 int main()
 {
     //setlocale(LC_ALL, "ru");
+    
     Myclass asd;
 
     for(int i = 1; i <= 20; ++i)
