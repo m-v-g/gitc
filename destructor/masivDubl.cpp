@@ -23,7 +23,7 @@ class Myclass
 
             cout << "VIZVOLSYA DESTRUKTOR KLASSA " << endl;
         }
-        /*
+        
         void print(void)  //tpelu funkcia
         {
             cout << endl;
@@ -46,7 +46,7 @@ class Myclass
                 return true;
             }
         }
-        */
+        
         bool isFull(void) //ete liqn e
         {
             if(index == arrSize)
@@ -80,7 +80,7 @@ class Myclass
                 arrPtr[index ++] = value;          //mexavor arjeq@ grenq mer taza masivi mej
             }
         }
-        /*
+        
         int pop() //geter
         {
             if(isEmpty())
@@ -92,7 +92,7 @@ class Myclass
                 return -9999;
             }
         }
-        */
+        
 };
 
 
