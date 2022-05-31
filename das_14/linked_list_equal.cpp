@@ -27,7 +27,22 @@ class Stack
         Node* tail = nullptr; //stexcenq Node(ukazatel tipi), tail anunov popoxakan inq@ bdi exni verjin uzeli hascen
         int listsQuantity = 0; //lister qanak@ hasvelu hamar
         
-    public:  
+    public: 
+        Stack()
+        {
+
+        }
+
+        Stack(Stack& x)
+        {
+            Node* temp = x.head;
+            for(int i = 0; i < listsQuantity; ++i)
+            {
+                push(temp -> value);
+                temp = temp -> next;
+            }
+        }
+
         ~ Stack()
         {
             if(head != nullptr) //ete inq@ datark e hech ban chenenq 
@@ -136,6 +151,8 @@ class Stack
             }
             return true;
         }
+
+
 };      
 
 
@@ -161,5 +178,9 @@ int main()
         cout << "list is not equal" << endl;
     }
     //cout << "lists is eqal " << LL1.is_equal(LL2);
+
+    Stack LL3 = LL1;
+    LL3.print(1);
+
     return 0;
 }
