@@ -116,7 +116,7 @@ class Stack
             }
         } //demic jnjox funkciai verj
 
-        bool is_equal(Stack x)
+        bool operator==(Stack& x)
         {
             if(listsQuantity != x.listsQuantity)
             {
@@ -152,6 +152,14 @@ int main()
     LL2.push(20);
     LL2.push(30);
 
-    cout << "lists is eqal " << LL1.is_equal(LL2);
+    if(LL1 == LL2)
+    {
+        cout << "list is equal" << endl;
+    }
+    else
+    {
+        cout << "list is not equal" << endl;
+    }
+    //cout << "lists is eqal " << LL1.is_equal(LL2);
     return 0;
 }
