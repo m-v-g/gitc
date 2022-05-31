@@ -77,8 +77,9 @@ class Myclass
                 arrSize *= 2;                      //arrSize el krknapatkenq or myus funkcianer@ gitenan
                 arrPtr = tempArray;                //jamanakavor masivi hascen grenq hin masivi anvan tak
                 delete[] tempArray;                //jamanakavor masiv@ anpetq e jnjenq iran
-                arrPtr[index ++] = value;          //mexavor arjeq@ grenq mer taza masivi mej
+                
             }
+            arrPtr[index ++] = value;          //mexavor arjeq@ grenq mer taza masivi mej
         }
         
         int pop() //geter
@@ -101,7 +102,7 @@ class Myclass
 int main()
 {
     //setlocale(LC_ALL, "ru");
-    
+
     Myclass asd;
 
     for(int i = 1; i <= 20; ++i)
