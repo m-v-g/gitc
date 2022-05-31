@@ -28,7 +28,7 @@ class Myclass
             cout << endl;
             for(int i = 0; i < arrSize; ++i)
             {
-                cout << arrPtr[i] << "\t"; //dimenq cherez index
+                cout << arrPtr[i] << "\t";
             }
             cout << endl;
         }
