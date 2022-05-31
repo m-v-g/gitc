@@ -36,7 +36,7 @@ class Stack
         Stack(Stack& x)
         {
             Node* temp = x.head;
-            for(int i = 0; i < listsQuantity; ++i)
+            for(int i = 0; i < x.listsQuantity; ++i)
             {
                 push(temp -> value);
                 temp = temp -> next;
