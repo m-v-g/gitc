@@ -132,12 +132,9 @@ class Stack
                     {
                         return false;
                     }
-                    else
-                    {
-                        return true;
-                    }
                 }
             }
+            return true;
         }
 };      
 
@@ -153,7 +150,7 @@ int main()
 
     LL2.push(10);
     LL2.push(20);
-    LL2.push(40);
+    LL2.push(30);
 
     cout << "lists is eqal " << LL1.is_equal(LL2);
     return 0;
