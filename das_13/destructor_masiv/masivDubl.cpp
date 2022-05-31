@@ -64,10 +64,9 @@ class Myclass
         {
             if(!isFull()) //ete hl@ masivi mej@ tex ka
             {
-                arrPtr[index ++] = value; //prost@ kavelacnenq arjeq@
+                arrPtr[++ index] = value; //prost@ kavelacnenq arjeq@
             }
             else //isk ete tex chka krknapatkenq masivi chap@ls
-
             {
                 int* tempArray = new int[arrSize * 2]; //sarqenq jamanakavor masiv krknaki chapi
                 for(int i = 0; i < arrSize; ++i)       //hertov kopya enenq hin masiv meji tver@ taza masivi mej
@@ -77,9 +76,9 @@ class Myclass
                 arrSize *= 2;                      //arrSize el krknapatkenq or myus funkcianer@ gitenan
                 arrPtr = tempArray;                //jamanakavor masivi hascen grenq hin masivi anvan tak
                 delete[] tempArray;                //jamanakavor masiv@ anpetq e jnjenq iran
-                
+                arrPtr[++ index] = value;          //mexavor arjeq@ grenq mer taza masivi mej
             }
-            arrPtr[index ++] = value;          //mexavor arjeq@ grenq mer taza masivi mej
+            
         }
         
         int pop() //geter
