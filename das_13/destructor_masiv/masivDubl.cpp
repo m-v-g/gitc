@@ -103,7 +103,7 @@ int main()
 
     Myclass asd;
 
-    for(int i = 1; i <= 4; ++i)
+    for(int i = 1; i <= 10; ++i)
     {
         cout << "pushed " << i * 10  << endl;
         asd.push(i * 10);
