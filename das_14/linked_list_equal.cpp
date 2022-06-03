@@ -28,23 +28,25 @@ class Stack
         int listsQuantity = 0; //lister qanak@ hasvelu hamar
         
     public: 
-        Stack()
+        Stack() //konstruktor po umolchaniyu
         {
-
+            cout << "Vizvolsya konstruktor poumolchaniyu dlya obekta " << this << endl;
         }
 
-        Stack(Stack& x)
-        {
-            Node* temp = x.head;
-            for(int i = 0; i < x.listsQuantity; ++i)
+        Stack(Stack& x) //konstruktor kopirovaniya
+        {   //x-i mej pahvum e goyutyun unecox obyekti tvyalner@
+            cout << "Vizvolsya konstruktor kopirovaniya dlya obekta " << this << endl;
+            Node* temp = x.head;                      //stexcenq nor obekt iran veragrenq poxancvac obekti glux@
+            for(int i = 0; i < x.listsQuantity; ++i)  //qayleri qanak@ = e x-i mej exac uzelneri qanakin
             {
-                push(temp -> value);
-                temp = temp -> next;
+                push(temp -> value);                  //ete kgrenq prost@ push inkati uninq mer @ntaciq sarqvox obektin
+                temp = temp -> next;                  //me qaylm araj mer hin obekti mej
             }
         }
 
-        ~ Stack()
+        ~ Stack() //destruktor
         {
+            cout << "Vizvolsya destruktor dlya obekta " << this << endl;
             if(head != nullptr) //ete inq@ datark e hech ban chenenq 
             {
                 while(head != tail)      //hertov ertanq araj minchev poch
@@ -55,43 +57,15 @@ class Stack
                 delete head;             //verjum mnac es me uzel@
             }
         } 
-        void print(bool av_re) //tpelu funkcia
+        void print(void) //tpelu funkcia
         { 
-            if(av_re) //avers
-            {
-                cout << "\tNULL" << endl;
-                cout << "\tV" << endl;
-                cout << "\t|" << endl;
                 Node* temp = head;        //sarqeq nor popoxakan vorpeszi hed@ chpchacnenq
                 while(temp != nullptr)    //qani der tempi arjeq@ chi dare nullptr uremn hl@ chenq hase verj
                 {
-                    cout << "VALUE:\t" << temp -> value << endl;
-                    cout << "PREV:\t" << temp -> prev << endl;
-                    cout << "NEXT:\t" << temp -> next << endl;
+                    cout << temp -> value << "\t";
                     temp = temp -> next;  //temp-in veragrenq hajord uzel@
-                    cout << "\t|" << endl;
-                    cout << "\tV" << endl;
                 }
-                cout << "\tNULL" << endl;
-            }
-            else //revers
-            {
-                cout << "\tNULL" << endl;
-                cout << "\t^" << endl;
-                cout << "\t|" << endl;
-                Node* temp = tail;        //sarqeq nor popoxakan vorpeszi tail@ chpchacnenq
-                while(temp != nullptr)    //qani der tempi arjeq@ chi dare nullptr uremn hl@ chenq hase skizb
-                {
-                    cout << "VALUE:\t" << temp -> value << endl;
-                    cout << "NEXT:\t" << temp -> next << endl;
-                    cout << "PREV:\t" << temp -> prev << endl;
-                    temp = temp -> prev;  //temp-in veragrenq naxord uzel@
-                    cout << "\t^" << endl;
-                    cout << "\t|" << endl;
-                }
-                cout << "\tNULL" << endl;
-            }
-            
+                cout << endl;
         } //tpelu funkciai verj
 
         void push (int value) //demic grelu funkcia
@@ -104,9 +78,9 @@ class Stack
             }
             else
             {
-                temp -> next = head; //tempi next cuyc ta glxin (araj NULL er bayc hmi uni hasce)
-                head -> prev = temp; //glxi prev cuyc ta tempin (araj NULL er chnayac hmi el e NULL)
-                head = temp;         //temp@ darav mer taza glux@
+                tail -> next = temp; //pochi next cuyc ta temp (araj NULL er chnayac hmi el e NULL)
+                temp -> prev = tail; //tempi prev cuyc ta arajva pochin(araj NULL er bayc hmi uni hasce)
+                tail = temp;         //temp@ darav mer taza poch@
             }
             ++ listsQuantity;
             return;
@@ -131,25 +105,37 @@ class Stack
             }
         } //demic jnjox funkciai verj
 
-        bool operator==(Stack& x)
+        Stack& operator= (const Stack& other) //konstruktor kopirovaniya
         {
-            if(listsQuantity != x.listsQuantity)
+            cout << "Vizvolsya operator prisvoivaniya" << endl;
+            Node* temp = other.head;                      //stexcenq nor obekt iran veragrenq poxancvac obekti glux@
+            for(int i = 0; i < other.listsQuantity; ++i)  //qayleri qanak@ = e x-i mej exac uzelneri qanakin
+            {
+                push(temp -> value);                  //ete kgrenq prost@ push inkati uninq mer @ntaciq sarqvox obektin
+                temp = temp -> next;                  //me qaylm araj mer hin obekti mej
+            }
+            return *this;
+        }
+
+        bool operator== (Stack& x) //hamematelu operator (arjeq@ kpoxancvi ssilkov)
+        {
+            if(listsQuantity != x.listsQuantity) //ete uzelneri qanak@ irar havasar che miangamic ksenq or iranq havasar chen
             {
                 return false;
             }
-            else
+            else //ete gone qanak@ havasar e hertov stugenq te iranc arjeqner@ havasar en te che
             {
-                Node* temp1 = head;
-                Node* temp2 = x.head;
+                Node* temp1 = head;   //stex kpahvi LL1-i glxi hascen
+                Node* temp2 = x.head; //stex el kpahvi funkciayin poxancvac LL2-i glxi hascen
                 for(int i = 0; i < listsQuantity; ++i)
                 {
-                    if(temp1->value != temp2->value)
+                    if(temp1->value != temp2->value) //hertov kstugenq meji arjeqneri havasarutyan payman@
                     {
                         return false;
                     }
                 }
             }
-            return true;
+            return true; //ete mer sax paymanner@ minchev es bavararvel en uremn iranq havasar en
         }
 
 
@@ -169,7 +155,7 @@ int main()
     LL2.push(20);
     LL2.push(30);
 
-    if(LL1 == LL2)
+    if(LL1 == LL2) //stugenq havasar en te ch
     {
         cout << "list is equal" << endl;
     }
@@ -179,8 +165,14 @@ int main()
     }
     //cout << "lists is eqal " << LL1.is_equal(LL2);
 
-    Stack LL3 = LL1;
-    LL3.print(1);
+    Stack LL3 = LL1; //stexcenq nor obekt LL3 vori parametrer@ havasar en LL1 -in
+    LL3.print();
+
+    Stack LL4;
+    
+    LL4 = LL3;
+    
+    LL4.print();
 
     return 0;
 }
