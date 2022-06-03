@@ -1,5 +1,6 @@
-//Lists is eqal
-
+//konstruktor kopirovaniya
+//operator prisvoivoniya
+//operator rovenstva
 
 
 #include <iostream>
@@ -105,7 +106,7 @@ class Stack
             }
         } //demic jnjox funkciai verj
 
-        Stack& operator= (const Stack& other) //konstruktor kopirovaniya
+        Stack& operator= (const Stack& other) //operator prisvoivoniya
         {
             cout << "Vizvolsya operator prisvoivaniya" << endl;
             Node* temp = other.head;                      //stexcenq nor obekt iran veragrenq poxancvac obekti glux@
