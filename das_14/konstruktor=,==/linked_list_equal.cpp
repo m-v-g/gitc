@@ -109,6 +109,11 @@ class Stack
         Stack& operator= (const Stack& other) //operator prisvoivoniya
         {
             cout << "Vizvolsya operator prisvoivaniya" << endl;
+            if(head != tail)
+            {
+                destroy();
+                head = tail = nullptr;
+            }
             Node* temp = other.head;                      //stexcenq nor obekt iran veragrenq poxancvac obekti glux@
             for(int i = 0; i < other.listsQuantity; ++i)  //qayleri qanak@ = e x-i mej exac uzelneri qanakin
             {
@@ -139,6 +144,20 @@ class Stack
             return true; //ete mer sax paymanner@ minchev es bavararvel en uremn iranq havasar en
         }
 
+        void destroy ()
+        {
+            cout << "Vizvolas funkciya unichtojeniya dly obekta " << this << endl;
+            if(head != nullptr) //ete inq@ datark e hech ban chenenq 
+            {
+                while(head != tail)      //hertov ertanq araj minchev poch
+                {
+                    head = head -> next; //me qaylm araj ganq
+                    delete head -> prev; //jnjenq ira naxordin
+                }
+                delete head;             //verjum mnac es me uzel@
+            }
+        }
+
 
 };      
 
@@ -167,13 +186,15 @@ int main()
     //cout << "lists is eqal " << LL1.is_equal(LL2);
 
     Stack LL3 = LL1; //stexcenq nor obekt LL3 vori parametrer@ havasar en LL1 -in
-    LL3.print();
+    //LL3.print();
 
     Stack LL4;
     
     LL4 = LL3;
     
-    LL4.print();
+    //LL4.print();
+    LL1 = LL2;
+    LL1.print();
 
     return 0;
 }
