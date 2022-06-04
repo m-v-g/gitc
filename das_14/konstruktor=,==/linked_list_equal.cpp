@@ -144,12 +144,21 @@ class Stack
             return true; //ete mer sax paymanner@ minchev es bavararvel en uremn iranq havasar en
         }
 
+        bool is_empty(void) //kstuge datark e te che
+        {
+            if(head == nullptr && tail == nullptr) //(head == 0 && tail == 0)-asxadav, (head == false && tail == false)-chasxadav, (listsQuantity == 0)
+            {
+                return true;
+            }
+            else return false;
+        }// datarkutyan funkciai verj
+
         void destroy ()
         {
             cout << "Vizvolas funkciya unichtojeniya dly obekta " << this << endl;
             if(head != nullptr) //ete inq@ datark e hech ban chenenq 
             {
-                while(head != tail)      //hertov ertanq araj minchev poch
+                while(is_empty())      //hertov ertanq araj minchev poch
                 {
                     head = head -> next; //me qaylm araj ganq
                     delete head -> prev; //jnjenq ira naxordin
