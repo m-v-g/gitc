@@ -4,7 +4,8 @@
 
 
 #include <iostream>
-#include <string>
+#include <string>   //dlya roboti s klasom string
+#include <fstream>  //dlya failovogo vvoda-vivoda
 using namespace std;
 
 class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node -in mainic chbdi sarkenq 
@@ -60,6 +61,23 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
                     cout << endl << endl;
             } //tpelu funkciai verj
 
+            void printFile(void)
+            {
+                ofstream fout; //sozdanie obekta dlya vivoda
+                fout.open("user_info.txt"); //asocaciya obekta outFile s failom
+                fout << "---ЧИСЛО ПОЛЗОВАТЕЛЬЕЙ\t" << userQuantity << "\t---" << endl << endl;
+                Node* temp = head; 
+                while(temp != nullptr)    //qani der tempi arjeq@ chi dare nullptr uremn hl@ chenq hase verj
+                {
+                    fout << "Номер ползователья:\t" << temp->index << endl;
+                    fout << "Имя ползователья:\t" << temp->login << endl;
+                    fout << "Пароль:\t" << temp->passwd << endl;
+                    temp = temp -> next;  //temp-in veragrenq hajord uzel@
+                    cout << endl << " " << endl;
+                }
+                fout.close(); //zavershit robotu s failom
+            }
+
             void push (string userName) //find-i u pushi gibrid funkcia
             {
                 Node* temp = new Node(userName); //stexcenq nor temp anunov Node* tesaki uzel
@@ -74,6 +92,7 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
                 else if(find(userName)) //ete login@ arden goyutyun uni
                 {
                     cout << "User is exist" << endl;
+                    delete temp; //metodom tika
                     return;
                 }
 
@@ -85,7 +104,7 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
                 }
                 cout << "Enter the password ";
                 //cin >> passTemp;
-                getline(cin, passTemp);
+                getline(cin, passTemp); //cin-@ kpoxancenq getline funkciain vorpes argument
                 temp->passwd = passTemp;
                 ++ userQuantity;
                 temp->index = userQuantity;
@@ -97,23 +116,28 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
                 Node* temp = head;
                     for(int i = 1; i <= userQuantity; ++ i)
                     {
-                        if(temp->login == kayCopy)
+                        if(temp->login == kayCopy) //sravnenie strok v stile C++
                         {
                             return 1;
                         }
-                        temp = temp->next;
+                        temp = temp->next;         //hajord user@ stugenq
                     }
                     return 0;
             }
     };
 
+
     int main()
     {
         Stack vkontakte;
-        vkontakte.push("asd");
-        vkontakte.push("asdf");
-        vkontakte.push("asdfg");
-        vkontakte.push("asd");
+        string userTemp;
+        for(int i = 1; i <=  5; ++i) //sarqenq 5 hat user
+        {
+            cout << "Enter the user name ";
+            getline(cin, userTemp); //cin-@ kpoxancenq getline funkciain vorpes argument
+            vkontakte.push(userTemp);
+        }
         vkontakte.print();
+        vkontakte.printFile();
         return 0;
     }
