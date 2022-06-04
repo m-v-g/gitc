@@ -65,7 +65,7 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
             {
                 ofstream fout; //sozdanie obekta dlya vivoda
                 fout.open("user_info.txt"); //asocaciya obekta outFile s failom
-                fout << "---ЧИСЛО ПОЛЗОВАТЕЛЬЕЙ\t" << userQuantity << "\t---" << endl << endl;
+                fout << "--- ЧИСЛО ПОЛЗОВАТЕЛЬЕЙ\t" << userQuantity << "\t---" << endl << endl;
                 Node* temp = head; 
                 while(temp != nullptr)    //qani der tempi arjeq@ chi dare nullptr uremn hl@ chenq hase verj
                 {
