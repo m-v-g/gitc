@@ -1,2 +1,2 @@
-gitignore
-.SpaceVim.d
+/gitignore
+/.SpaceVim.d
