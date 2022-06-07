@@ -30,12 +30,14 @@ class Node
     {
         private:
             Node* root = nullptr;
+            int leavesAmount = 0;
 
             void add(int x, Node* temp)
             {
                 if(root == nullptr)
                 {
                     cout << "the value " << x << " inserted in the root" << endl;
+                    ++ leavesAmount;
                     root = new Node(x); //stexcenq nor element iran poxancenq mer valun u qani vor inq@ arajinne inq@ bdi exni mer armat@
                 }
                 else if(x < temp->value) //ete x poqr e @ntaciqi valuic uremn kerdanq dzax
@@ -43,6 +45,7 @@ class Node
                     if(temp->left == nullptr) //gnacel enq dzax bayc ete ed chyux@ datark e
                     {
                         cout << "the value " << x << " inserted at left" << endl;
+                        ++ leavesAmount;
                         temp->left = new Node(x); //stexcenq nor element u @ntaciki left@ iran cuyc ta
                     }
                     else //isk ete chyux@ datark ch
@@ -56,6 +59,7 @@ class Node
                     if(temp->right == nullptr) //gnacel enq aj bayc ete ed chyux@ datark e
                     {
                         cout << "the value " << x << " inserted at right" << endl;
+                        ++ leavesAmount;
                         temp->right = new Node(x); //stexcenq nor element u @ntaciki right@ iran cuyc ta
                     }
                     else //isk ete chyux@ datark ch
@@ -118,6 +122,7 @@ class Node
                 }
                 else
                 {
+                    cout << "the trees Leaves Amount " << leavesAmount << endl;
                     print(root); //stexic nor krnanq peregruzkov mer iskakan funkciain kanchenq
                 }
             }
@@ -137,8 +142,20 @@ class Node
                 {
                     destroy(temp->right);    //rekursiv erdanq aj
                 }
+                -- leavesAmount;
                 delete temp;
             }
+            /*
+            Node* find(int x)
+            {
+                Node* temp = root;
+                if(temp->value == x)
+                {
+
+                }
+                return temp;
+            }
+            */
     };
 
     int main()
