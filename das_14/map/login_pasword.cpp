@@ -31,7 +31,7 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
         public:
             ~ Stack() //destruktor
             {
-                //cout << "Vizvolsya destruktor dlya obekta " << this << endl;
+                cout << "Vizvolsya destruktor dlya obekta " << this << endl;
                 if(head != nullptr) //ete inq@ datark e hech ban chenenq 
                 {
                     while(head != tail)      //hertov ertanq araj minchev poch
@@ -71,6 +71,7 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
                 else if(find(kay)) //ete login@ arden goyutyun uni
                 {
                     cout << "User is exist" << endl;
+                    delete temp; //metodom tika
                     return;
                 }
 
@@ -100,6 +101,30 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
                         temp = temp->next;
                     }
                     return 0;
+            }
+
+            bool is_empty(void) //kstuge datark e te che
+            {
+                if(head == nullptr && tail == nullptr) //(head == 0 && tail == 0)-asxadav, (head == false && tail == false)-chasxadav, (listsQuantity == 0)
+                {
+                    return true;
+                }
+                else return false;
+            }// datarkutyan funkciai verj
+
+
+            void destroy ()
+            {
+                cout << "Vizvolas funkciya unichtojeniya dly obekta " << this << endl;
+                if(head != nullptr) //ete inq@ datark e hech ban chenenq 
+                {
+                    while(is_empty())      //hertov ertanq araj minchev poch
+                    {
+                        head = head -> next; //me qaylm araj ganq
+                        delete head -> prev; //jnjenq ira naxordin
+                    }
+                    delete head;             //verjum mnac es me uzel@
+                }
             }
     };
 

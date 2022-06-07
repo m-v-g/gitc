@@ -33,9 +33,11 @@ class Node //class-i mej class sarqenq, LinkedLIst-i private sektorum mek e Node
             int userQuantity = 0; //lister qanak@ hasvelu hamar
 
         public:
+            
+
             ~ Stack() //destruktor
             {
-                //cout << "Vizvolsya destruktor dlya obekta " << this << endl;
+                cout << "Vizvolsya destruktor dlya obekta " << this << endl;
                 if(head != nullptr) //ete inq@ datark e hech ban chenenq 
                 {
                     while(head != tail)      //hertov ertanq araj minchev poch
