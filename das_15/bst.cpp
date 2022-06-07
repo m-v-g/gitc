@@ -106,6 +106,23 @@ class Node
                 delete temp;
             }
 
+            bool find(Node* temp, int copyX)
+            {
+                if(temp->value == copyX)
+                {
+                    return true;
+                }
+                else if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
+                {
+                    find(temp->left, copyX);    //rekursiv erdanq dzax
+                }
+                else if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
+                {
+                    find(temp->right, copyX);    //rekursiv erdanq aj
+                }
+                return false;
+            }
+
         public:
 
             BST()
@@ -146,18 +163,18 @@ class Node
                 }
             }
 
-            
-            /*
-            Node* find(int x)
+            bool find(int x)
             {
-                Node* temp = root;
-                if(temp->value == x)
+                if(root == nullptr)
                 {
-
+                    return false;
                 }
-                return temp;
+                else
+                {
+                    return find(root, x);
+                }
             }
-            */
+    
     };
 
     int main()
@@ -169,7 +186,8 @@ class Node
             tree.add(array[i]);
         }
        
-        tree.print();
+        //tree.print();
+        cout << "find " << tree.find(3) << endl;
 
         return 0;
     }
