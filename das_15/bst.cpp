@@ -112,13 +112,13 @@ class Node
                 {
                     return true;
                 }
-                else if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
+                if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
                 {
-                    find(temp->left, copyX);    //rekursiv erdanq dzax
+                    return find(temp->left, copyX);    //rekursiv erdanq dzax
                 }
-                else if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
+                if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
                 {
-                    find(temp->right, copyX);    //rekursiv erdanq aj
+                    return find(temp->right, copyX);    //rekursiv erdanq aj
                 }
                 return false;
             }
@@ -180,14 +180,14 @@ class Node
     int main()
     {
         BST tree;
-        int array[] = {7, 3, 2, 1, 9, 5, 4, 6};
+        int array[] = {7, 3, 2, 1, 9, 5, 4, 6, 8};
         for (int i = 0; i < sizeof(array) / sizeof(array[0]); ++i)
         {
             tree.add(array[i]);
         }
        
         //tree.print();
-        cout << "find " << tree.find(3) << endl;
+        cout << "find " << tree.find(9) << endl;
 
         return 0;
     }
