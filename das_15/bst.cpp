@@ -87,6 +87,25 @@ class Node
                 }
             }
 
+            void destroy(Node* temp) //
+            {
+                if(temp == nullptr)
+                {
+                    cout << "the tree is empty" << endl;
+                    return;
+                }
+                if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
+                {
+                    destroy(temp->left);    //rekursiv erdanq dzax
+                }
+                if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
+                {
+                    destroy(temp->right);    //rekursiv erdanq aj
+                }
+                -- leavesAmount;
+                delete temp;
+            }
+
         public:
 
             BST()
@@ -127,24 +146,7 @@ class Node
                 }
             }
 
-            void destroy(Node* temp) //
-            {
-                if(temp == nullptr)
-                {
-                    cout << "the tree is empty" << endl;
-                    return;
-                }
-                if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
-                {
-                    destroy(temp->left);    //rekursiv erdanq dzax
-                }
-                if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
-                {
-                    destroy(temp->right);    //rekursiv erdanq aj
-                }
-                -- leavesAmount;
-                delete temp;
-            }
+            
             /*
             Node* find(int x)
             {
