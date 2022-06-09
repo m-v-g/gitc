@@ -106,21 +106,28 @@ class Node
                 delete temp;
             }
 
-            bool find(Node* temp, int copyX)
+            Node* find(Node* temp, int copyX)
             {
                 if(temp->value == copyX)
                 {
-                    return true;
+                    return temp;
                 }
-                if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
+                if(copyX < temp->value)
                 {
-                    return find(temp->left, copyX);    //rekursiv erdanq dzax
+                    if(temp->left != nullptr) //ete @ntaciki dzax koxm@ banm ka
+                    {
+                        return find(temp->left, copyX);    //rekursiv erdanq dzax
+                    }
                 }
-                if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
+                if(copyX > temp->value)
                 {
-                    return find(temp->right, copyX);    //rekursiv erdanq aj
+                    if(temp->right != nullptr) //ete @ntaciki aj koxm@ banm ka
+                    {
+                        return find(temp->right, copyX);    //rekursiv erdanq aj
+                    }
                 }
-                return false;
+                
+                return nullptr;
             }
 
         public:
@@ -187,7 +194,7 @@ class Node
         }
        
         //tree.print();
-        cout << "find " << tree.find(9) << endl;
+        cout << "find " << tree.find(0) << endl;
 
         return 0;
     }
